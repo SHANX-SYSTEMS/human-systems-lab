@@ -1,0 +1,36 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://shanx.systems/schemas/human-lab-session-v0.1.schema.json",
+  "title": "Human Systems Lab Session Envelope v0.1",
+  "type": "object",
+  "required": ["schema_version", "experiment", "session", "rows"],
+  "properties": {
+    "schema_version": { "const": "human-lab-session-v0.1" },
+    "experiment": {
+      "type": "object",
+      "required": ["id", "version", "protocol_hash"],
+      "properties": {
+        "id": { "type": "string", "minLength": 1 },
+        "version": { "type": "string", "minLength": 1 },
+        "protocol_hash": { "type": "string", "pattern": "^[0-9a-f]{64}$" }
+      },
+      "additionalProperties": true
+    },
+    "session": {
+      "type": "object",
+      "required": ["id", "seed", "started_at", "completed_at", "app_version"],
+      "properties": {
+        "id": { "type": "string", "format": "uuid" },
+        "seed": { "type": "integer", "minimum": 0 },
+        "started_at": { "type": "string", "format": "date-time" },
+        "completed_at": { "type": "string", "format": "date-time" },
+        "app_version": { "type": "string" },
+        "input_mode": { "type": "string" }
+      },
+      "additionalProperties": true
+    },
+    "awareness": { "type": "object" },
+    "rows": { "type": "array", "minItems": 1, "maxItems": 500, "items": { "type": "object" } }
+  },
+  "additionalProperties": false
+}
