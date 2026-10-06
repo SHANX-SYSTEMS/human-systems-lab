@@ -1,0 +1,87 @@
+name: Experiment proposal
+description: Propose a bounded human-systems experiment only where a meaningful question remains unresolved.
+title: "[EXPERIMENT] "
+labels: []
+body:
+  - type: textarea
+    id: question
+    attributes:
+      label: Research question
+      description: State one bounded question.
+    validations:
+      required: true
+
+  - type: textarea
+    id: known
+    attributes:
+      label: What does existing evidence already establish?
+      description: Summarize relevant evidence and include sources where possible.
+    validations:
+      required: true
+
+  - type: textarea
+    id: unresolved
+    attributes:
+      label: What remains unresolved?
+      description: Explain why another experiment is justified.
+    validations:
+      required: true
+
+  - type: dropdown
+    id: mode
+    attributes:
+      label: Study mode
+      options:
+        - Confirmatory / preregistered
+        - Exploratory
+        - Method / infrastructure validation
+    validations:
+      required: true
+
+  - type: textarea
+    id: outcome
+    attributes:
+      label: Primary outcome or explicit exploratory objective
+    validations:
+      required: true
+
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternative explanations and failure conditions
+      description: What result would weaken or falsify the proposed interpretation?
+    validations:
+      required: true
+
+  - type: textarea
+    id: stopping
+    attributes:
+      label: Stopping rule
+      description: When does data collection stop?
+    validations:
+      required: true
+
+  - type: textarea
+    id: ethics
+    attributes:
+      label: Privacy, ethics, and participant burden
+    validations:
+      required: true
+
+  - type: textarea
+    id: reproducibility
+    attributes:
+      label: Determinism / auditability plan
+      description: Seeds, manifests, validation checks, or other reproducibility controls.
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: integrity
+    attributes:
+      label: Research-integrity acknowledgement
+      options:
+        - label: I will preserve a failed hypothesis as a failed hypothesis rather than redefine success after seeing the result.
+          required: true
+        - label: I will not submit private participant data or confidential datasets through this issue.
+          required: true
