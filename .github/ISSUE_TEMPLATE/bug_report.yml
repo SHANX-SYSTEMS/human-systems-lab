@@ -1,0 +1,54 @@
+name: Bug report
+description: Report a reproducible defect in the engine, demo, schemas, tests, or documentation.
+title: "[BUG] "
+labels: []
+body:
+  - type: textarea
+    id: summary
+    attributes:
+      label: Summary
+      description: What is broken?
+    validations:
+      required: true
+
+  - type: textarea
+    id: reproduce
+    attributes:
+      label: Minimal reproduction
+      description: Exact steps or smallest test case that reproduces the problem.
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behavior
+    validations:
+      required: true
+
+  - type: textarea
+    id: actual
+    attributes:
+      label: Actual behavior
+    validations:
+      required: true
+
+  - type: input
+    id: environment
+    attributes:
+      label: Environment
+      placeholder: "OS, Node version, browser"
+
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Evidence
+      description: Logs, failing test output, or sanitized screenshots. Remove secrets and private data.
+
+  - type: checkboxes
+    id: integrity
+    attributes:
+      label: Safety and data check
+      options:
+        - label: This report does not contain participant data, credentials, tokens, or confidential SHANX material.
+          required: true
