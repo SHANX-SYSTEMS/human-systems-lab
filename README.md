@@ -8,6 +8,14 @@ Human Systems Lab turns the participant workflow into:
 
 The goal is to remove repetitive file handling and one-off experiment wiring without weakening research integrity.
 
+## Start here
+
+New to the project? Follow the [10-minute first-run path](docs/START_HERE.md).
+
+Our first public participation mission is open in [Issue #3](https://github.com/SHANX-SYSTEMS/human-systems-lab/issues/3): run the local demo once and report **one real friction point, ambiguity, accessibility problem, or reproducibility concern**.
+
+You do not need to contribute code to contribute useful evidence.
+
 ## Why this exists
 
 Research software often forces participants and builders to manage files, versions, exports, and bespoke experiment pages. Human Systems Lab separates the participant experience from the evidence machinery.
@@ -19,6 +27,7 @@ Participants should experience a small, clear mission. Underneath, the protocol 
 Requires Node.js 20+.
 
 ```bash
+npm install
 npm test
 npm run demo
 ```
@@ -37,7 +46,7 @@ The demo generates the public ATTENTION-001 v0.5 protocol locally. No participan
 - `schemas/` — public session schemas
 - `tests/` — reproducibility and invariant checks
 - `demo/` — local browser demo
-- `docs/` — architecture and experiment specification
+- `docs/` — architecture, experiment specification, and newcomer guidance
 - `RESEARCH_INTEGRITY.md` — evidence and failure rules
 - `SECURITY.md` — security boundary
 
@@ -72,7 +81,13 @@ It is included as a methodology and reproducibility example — **not as proof o
 
 ## Contributing
 
-Start with [CONTRIBUTING.md](CONTRIBUTING.md), [RESEARCH_INTEGRITY.md](RESEARCH_INTEGRITY.md), and [SECURITY.md](SECURITY.md).
+Start with [START_HERE.md](docs/START_HERE.md), [CONTRIBUTING.md](CONTRIBUTING.md), [RESEARCH_INTEGRITY.md](RESEARCH_INTEGRITY.md), and [SECURITY.md](SECURITY.md).
+
+GitHub issue forms are available for:
+
+- first-run feedback;
+- reproducible bug reports;
+- bounded experiment proposals.
 
 ## License
 
