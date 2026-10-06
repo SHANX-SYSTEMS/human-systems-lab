@@ -2,80 +2,104 @@
 
 **Open-source infrastructure for low-friction, reproducible human-behavior experiments.**
 
-Human Systems Lab turns the participant workflow into:
+Human Systems Lab is built around one participant loop:
 
 **open → play → auto-save → verify receipt → analyze**
 
 The goal is to remove repetitive file handling and one-off experiment wiring without weakening research integrity.
 
-## Why this exists
+## Why
 
-Research software often forces participants and builders to manage files, versions, exports, and bespoke experiment pages. Human Systems Lab separates the participant experience from the evidence machinery.
+Serious behavioral experiments often become slower than they need to be because researchers repeatedly rebuild the same plumbing: seeded trial generation, local recovery, sync, validation, receipts, versioning and raw-versus-derived data separation.
 
-Participants should experience a small, clear mission. Underneath, the protocol remains deterministic, auditable, versioned, and falsifiable.
+Human Systems Lab turns those pieces into reusable infrastructure so experimental effort can stay focused on the actual question.
 
 ## Quick start
 
-Requires Node.js 20+.
+Requirements: Node.js 20+.
 
 ```bash
+git clone https://github.com/shivpurohit460-lab/human-systems-lab.git
+cd human-systems-lab
 npm test
 npm run demo
 ```
 
 Then open:
 
-`http://localhost:8080/demo/`
+```text
+http://localhost:8080/demo/
+```
 
-The demo generates the public ATTENTION-001 v0.5 protocol locally. No participant data is required.
+The demo is local-only. It generates the sanitized ATTENTION-001 v0.5 protocol and sends no participant data anywhere.
 
-## Repository map
+## Included in v0.1
 
-- `src/core/` — deterministic randomization, local storage, sync queue
-- `src/experiments/` — public experiment modules
-- `protocols/` — manifests and protocol lineage
-- `schemas/` — public session schemas
-- `tests/` — reproducibility and invariant checks
-- `demo/` — local browser demo
-- `docs/` — architecture and experiment specification
-- `RESEARCH_INTEGRITY.md` — evidence and failure rules
-- `SECURITY.md` — security boundary
-
-## What is public
-
-- experiment-engine primitives
-- deterministic trial generation
-- protocol manifests
-- local/offline queue patterns
-- sync-receipt patterns
-- protocol-validation examples
+- deterministic seeded trial generation
+- experiment protocol manifests
+- browser IndexedDB storage helpers
+- generic offline/sync queue abstraction
+- JSON session-envelope schema
 - reproducibility tests
+- ATTENTION-001 v0.5 sanitized protocol example
 - research-integrity rules
-- security/privacy guidance
-- synthetic and sanitized examples
+- security/privacy boundary
+- local public demo
 
-## What is not public
-
-This repository must never contain private participant data, raw SHANX owner sessions, production credentials, access tokens, private infrastructure identifiers, internal Notion references, or unpublished confidential research outputs.
-
-## Core research law
+## Research law
 
 > **Do not test what strong evidence already establishes. Test what the product, mechanism, or unresolved question still needs to know.**
 
 A failed hypothesis remains a failed hypothesis. Raw observations stay separate from derived analysis.
 
+See [RESEARCH_INTEGRITY.md](RESEARCH_INTEGRITY.md).
+
+## Public / private boundary
+
+This repository is intentionally public and sanitized.
+
+It must never contain:
+- private participant data
+- raw private SHANX sessions
+- production credentials or access tokens
+- private infrastructure identifiers
+- internal Notion references
+- unpublished confidential research outputs
+
+See [SECURITY.md](SECURITY.md).
+
 ## ATTENTION-001
 
-The first public example is the ATTENTION-001 protocol lineage used to pressure-test the lab architecture.
+ATTENTION-001 is included as a historical protocol lineage used to pressure-test the lab architecture.
 
-It is included as a methodology and reproducibility example — **not as proof of a universal neuroscience mechanism**.
+It is an **example of experimental design and reproducibility**, not proof of a universal neuroscience mechanism.
+
+See [protocols/attention-001/v0.5.manifest.json](protocols/attention-001/v0.5.manifest.json).
+
+## Architecture
+
+The intended production pattern is:
+
+**approved experiment → deterministic client → local queue → bounded submission → immutable raw evidence → sync receipt → separately versioned analysis**
+
+See [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md) and [docs/EXPERIMENT_SPEC.md](docs/EXPERIMENT_SPEC.md).
 
 ## Contributing
 
-Start with [CONTRIBUTING.md](CONTRIBUTING.md), [RESEARCH_INTEGRITY.md](RESEARCH_INTEGRITY.md), and [SECURITY.md](SECURITY.md).
+Contributions are welcome, especially around reproducibility, accessibility, security, validators, experiment modules and backend adapters.
+
+See [CONTRIBUTING.md](CONTRIBUTING.md).
+
+## Status
+
+**v0.1 — open-source foundation**
+
+This is an early research-engineering release. APIs and module contracts may change.
 
 ## License
 
-Apache License 2.0. See [LICENSE](LICENSE).
+Apache License 2.0. See [LICENSE](LICENSE) and [NOTICE](NOTICE).
 
-The license does not grant rights to SHANX SYSTEMS trademarks beyond customary attribution and origin-description uses described by the license.
+## Citation
+
+See [CITATION.cff](CITATION.cff).
