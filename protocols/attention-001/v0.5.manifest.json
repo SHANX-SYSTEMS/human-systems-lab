@@ -1,0 +1,19 @@
+{
+  "experiment_id": "ATTENTION-001",
+  "version": "0.5",
+  "title": "Matched-Target Suppression Test",
+  "status": "historical-example",
+  "primary_outcome": "search_rt_ms",
+  "preregistered_hypothesis": "(transfer median RT trained-control) - (baseline median RT trained-control) < 0",
+  "total_trials": 118,
+  "phases": {
+    "practice": 6,
+    "baseline": 32,
+    "training": 48,
+    "transfer": 32
+  },
+  "notes": [
+    "Public example only; private participant data is intentionally excluded.",
+    "A single-participant result must not be treated as a universal neuroscience claim."
+  ]
+}
