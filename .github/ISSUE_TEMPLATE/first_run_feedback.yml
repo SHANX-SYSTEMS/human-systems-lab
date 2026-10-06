@@ -1,0 +1,72 @@
+name: First-run feedback
+description: Report one friction point, ambiguity, or reproducibility concern from your first Human Systems Lab run.
+title: "[FIRST RUN] "
+labels: []
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thank you for trying Human Systems Lab.
+
+        Please report what actually happened. Do not include participant data, credentials, tokens, private SHANX material, or confidential datasets.
+
+  - type: dropdown
+    id: area
+    attributes:
+      label: What area did you evaluate?
+      options:
+        - Setup / installation
+        - Test suite
+        - Local demo
+        - Participant interaction
+        - Accessibility
+        - Reproducibility
+        - Documentation
+        - Privacy / security
+        - Other
+    validations:
+      required: true
+
+  - type: textarea
+    id: tried
+    attributes:
+      label: What did you try?
+      description: Give the smallest useful sequence of steps.
+      placeholder: "Example: npm install → npm test → npm run demo → opened /demo/"
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: What did you expect?
+    validations:
+      required: true
+
+  - type: textarea
+    id: observed
+    attributes:
+      label: What actually happened?
+    validations:
+      required: true
+
+  - type: input
+    id: environment
+    attributes:
+      label: Environment
+      description: OS, Node version, browser, or other relevant runtime information.
+      placeholder: "Windows 11, Node 20.x, Chrome 140"
+
+  - type: textarea
+    id: suggestion
+    attributes:
+      label: What would have made this clearer or safer?
+      description: Optional. A proposed fix is welcome but not required.
+
+  - type: checkboxes
+    id: privacy
+    attributes:
+      label: Privacy check
+      options:
+        - label: I have not included private participant data, credentials, tokens, raw owner sessions, or confidential datasets.
+          required: true
