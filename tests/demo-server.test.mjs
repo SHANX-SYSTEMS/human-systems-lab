@@ -71,6 +71,18 @@ test('Node-only demo server serves expected public paths and rejects unsafe path
       await unlink(symlinkPath);
       await rm(scratch, { recursive: true, force: true });
     }
+    // An alias inside the repository must not expose a normally unserved root file.
+    const privateFile = join(root, 'HSL_SYNTHETIC_PRIVATE_CANARY.js');
+    const internalAlias = join(root, 'demo', 'private-alias.js');
+    try {
+      await writeFile(privateFile, 'SYNTHETIC_TEST_ONLY_DO_NOT_DISCLOSE');
+      await symlink(privateFile, internalAlias);
+      const internalLeak = await fetch(origin + '/demo/private-alias.js');
+      assert.equal(internalLeak.status, 404, 'in-root symlink alias rejected');
+    } finally {
+      await unlink(internalAlias);
+      await unlink(privateFile);
+    }
     const redirect = await fetch(origin + '/', { redirect: 'manual' });
     assert.equal(redirect.status, 302);
     assert.equal(redirect.headers.get('location'), '/demo/');
