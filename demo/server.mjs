@@ -1,6 +1,6 @@
 import { createServer } from 'node:http';
 import { readFile, realpath, stat } from 'node:fs/promises';
-import { dirname, extname, resolve, sep } from 'node:path';
+import { dirname, extname, relative, resolve, sep } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 // Built-in Node.js only: localhost demo, no dependency install or production API.
@@ -65,7 +65,11 @@ const server = createServer(async (req, res) => {
     let file = target;
     const entryStat = await stat(file);
     if (entryStat.isDirectory()) file = resolve(file, 'index.html');
-    if (!within(await realpath(file))) {
+    // Reject symlinks even when they resolve inside the repository: an alias
+    // under /demo/ could otherwise expose non-public files from the repo root.
+    const actual = await realpath(file);
+    const expected = resolve(rootReal, relative(root, file));
+    if (!within(actual) || actual !== expected) {
       res.writeHead(404).end();
       return;
     }
